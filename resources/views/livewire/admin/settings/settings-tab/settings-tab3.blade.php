@@ -30,7 +30,7 @@
                             @endif
                         </div>
                         <div>  
-                            <form wire:submit.prevent="uploadImage">
+                            <form wire:submit="uploadImage">
                                 <div class="d-flex justify-content-start gap-1">
                                     <div class="btn-group pt-3 dropend"> 
                                         <button class="btn btn-outline-dark btn-sm dropdown-toggle shadow-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,7 +41,7 @@
                                             <li class="dropdown-item">
                                                 @csrf
                                                 <!-- Add a hidden file input element -->
-                                                <input type="file" id="file-input" style="display: none;" wire:model="image" accept="image/*">
+                                                <input type="file" id="file-input" style="display: none;" wire:model.live="image" accept="image/*">
                                                 <!-- Use JavaScript to open the file upload dialog -->
                                                 <a onclick="event.preventDefault(); document.getElementById('file-input').click();" style="cursor: pointer;">Upload Image</a>
                                             </li>
@@ -73,12 +73,12 @@
                 </div>
 
                 <div class="card-body">
-                    <form wire:submit.prevent="changePassword">
+                    <form wire:submit="changePassword">
                         <div class="row gap-3">
                             <div class="col-12">
                                 <label for="current_password" class="form-label fw-bold">Current Password</label>
                                 <input type="password" class="form-control" 
-                                id="current_password" wire:model.debounce.500ms="current_password"
+                                id="current_password" wire:model.live.debounce.500ms="current_password"
                                 placeholder="Current password">
                                 @error('current_password') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
@@ -86,7 +86,7 @@
                             <div class="col-12">
                                 <label for="new_password" class="form-label fw-bold">New Password</label>
                                 <input type="password" class="form-control" 
-                                id="new_password" wire:model.debounce.500ms="new_password"
+                                id="new_password" wire:model.live.debounce.500ms="new_password"
                                 placeholder="New password">
                                 @error('new_password') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
@@ -94,7 +94,7 @@
                             <div class="col-12">
                                 <label for="confirm_password" class="form-label fw-bold">Confirm Password</label>
                                 <input type="password" class="form-control" 
-                                id="confirm_password" wire:model.debounce.500ms="confirm_password"
+                                id="confirm_password" wire:model.live.debounce.500ms="confirm_password"
                                 placeholder="Confirm Password">
                                 @error('confirm_password') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>

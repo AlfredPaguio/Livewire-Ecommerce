@@ -9,14 +9,14 @@
             <h3 class="m-0 font-weight-bold text-light">Edit information for {{ $slider->title }}</h3>
         </div>
         <div class="card-body bg-light">
-            <form class="row g-3 justify-content" wire:submit.prevent="editSlider">
+            <form class="row g-3 justify-content" wire:submit="editSlider">
                 @csrf
                 <div class="col-md-12">
                     <label for="title" class="form-label fw-bold">Slider Title</label>
                     <input type="text" class="form-control @error('title') is-invalid  @enderror
                     @if($title) '' @endif"
                     id="title" placeholder="Slider Title"
-                    wire:model.debounce.500ms="title">
+                    wire:model.live.debounce.500ms="title">
                     @error('title') 
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -27,7 +27,7 @@
                     <textarea class="form-control @error('description') is-invalid  @enderror
                     @if($description) '' @endif" 
                     name="description" id="description" rows="2" placeholder="Description"
-                    wire:model.debounce.500ms="description"></textarea>
+                    wire:model.live.debounce.500ms="description"></textarea>
                     @error('description') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -38,7 +38,7 @@
                     <input class="form-control @error('image') is-invalid  @enderror
                     @if($image) '' @endif"
                     type="file" id="image"
-                    wire:model="image" accept="image/*">     
+                    wire:model.live="image" accept="image/*">     
                     @error('image') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -56,7 +56,7 @@
                     <label for="status" class="form-label fw-bold" >
                         Status
                     </label>
-                    <select name="status" id="status" class="form-select" aria-placeholder="Select Status" wire:model.debounce.500ms="status">
+                    <select name="status" id="status" class="form-select" aria-placeholder="Select Status" wire:model.live.debounce.500ms="status">
                         <option value="1">Active</option>
                         <option value="0">Inactive</option>
                     </select>

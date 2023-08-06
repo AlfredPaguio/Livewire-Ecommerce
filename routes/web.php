@@ -1,29 +1,29 @@
 <?php
-use App\Http\Livewire\Auth\Login;
+use App\Livewire\Auth\Login;
 
-use App\Http\Livewire\Auth\Register;
+use App\Livewire\Auth\Register;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Profile\Account;
+use App\Livewire\Profile\Account;
 
-use App\Http\Livewire\Main\Cart\CartList;
-use App\Http\Livewire\Main\Landing\Index;
-use App\Http\Livewire\Admin\Brands\Brands;
-use App\Http\Livewire\Admin\Sliders\Sliders;
-use App\Http\Livewire\Main\Products\Product;
-use App\Http\Livewire\Admin\Brands\BrandsAdd;
-use App\Http\Livewire\Admin\Brands\BrandsEdit;
-use App\Http\Livewire\Admin\Products\Products;
-use App\Http\Livewire\Admin\Settings\Settings;
-use App\Http\Livewire\Admin\Sliders\SlidersAdd;
-use App\Http\Livewire\Main\Categories\Category;
-use App\Http\Livewire\Admin\Dashboard\Dashboard;
-use App\Http\Livewire\Admin\Sliders\SlidersEdit;
-use App\Http\Livewire\Admin\Products\ProductsAdd;
-use App\Http\Livewire\Admin\Categories\Categories;
-use App\Http\Livewire\Admin\Products\ProductsEdit;
-use App\Http\Livewire\Admin\Categories\CategoriesAdd;
-use App\Http\Livewire\Admin\Categories\CategoriesEdit;
-use App\Http\Livewire\Main\Categories\Categories as MainCategories;
+use App\Livewire\Main\Cart\CartList;
+use App\Livewire\Main\Landing\Index;
+use App\Livewire\Admin\Brands\Brands;
+use App\Livewire\Admin\Sliders\Sliders;
+use App\Livewire\Main\Products\Product;
+use App\Livewire\Admin\Brands\BrandsAdd;
+use App\Livewire\Admin\Brands\BrandsEdit;
+use App\Livewire\Admin\Products\Products;
+use App\Livewire\Admin\Settings\Settings;
+use App\Livewire\Admin\Sliders\SlidersAdd;
+use App\Livewire\Main\Categories\Category;
+use App\Livewire\Admin\Dashboard\Dashboard;
+use App\Livewire\Admin\Sliders\SlidersEdit;
+use App\Livewire\Admin\Products\ProductsAdd;
+use App\Livewire\Admin\Categories\Categories;
+use App\Livewire\Admin\Products\ProductsEdit;
+use App\Livewire\Admin\Categories\CategoriesAdd;
+use App\Livewire\Admin\Categories\CategoriesEdit;
+use App\Livewire\Main\Categories\Categories as MainCategories;
 
 /*
 |--------------------------------------------------------------------------

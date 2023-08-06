@@ -11,7 +11,7 @@
         </div>
 
         <div class="col-md-8 col-lg-5 p-4">
-            <form class="shadow-sm border rounded p-3 p-md-5" wire:submit.prevent="login">
+            <form class="shadow-sm border rounded p-3 p-md-5" wire:submit="login">
                 @csrf
                 <h1 class="mt-4" align="center"><u>Login</u></h1>
 
@@ -35,7 +35,7 @@
                     <label class="fw-bold">Username or Email</label>
                     <input type="text" id="login" class="form-control @error('usernameOrEmail') is-invalid  @enderror
                     @if($usernameOrEmail) '' @endif"
-                    wire:model.debounce.500ms="usernameOrEmail" autocomplete="off" placeholder="Username or Email"/>
+                    wire:model.live.debounce.500ms="usernameOrEmail" autocomplete="off" placeholder="Username or Email"/>
                     @error('usernameOrEmail') 
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -45,7 +45,7 @@
                     <label class="fw-bold">Password</label>
                     <input type="{{ $showPassword ? 'text' : 'password' }}" id="password_form" class="form-control @error('password') is-invalid  @enderror
                     @if($usernameOrEmail) '' @endif"
-                    wire:model.debounce.500ms="password" placeholder="Password"/>
+                    wire:model.live.debounce.500ms="password" placeholder="Password"/>
                     @error('password') 
                         <small class="text-danger">{{ $message }}</small> 
                     @enderror
@@ -54,7 +54,7 @@
                 <div class="row mb-1">
                    <div class="col d-flex">
                        <div class="form-check">
-                           <input class="form-check-input" type="checkbox" id="showPassword" wire:model="showPassword"/>
+                           <input class="form-check-input" type="checkbox" id="showPassword" wire:model.live="showPassword"/>
                            <label class="form-check-label" for="showPassword">
                                Show password 
                             </label>
@@ -69,7 +69,7 @@
                 <!-- Submit button -->
                 <div align="center">
                     <div class="text-start mb-1">
-                        <input class="form-check-input" type="checkbox" id="rememberMe" wire:model="remember"/>
+                        <input class="form-check-input" type="checkbox" id="rememberMe" wire:model.live="remember"/>
                         <label class="form-check-label" for="rememberMe">
                             Remember me? 
                         </label>

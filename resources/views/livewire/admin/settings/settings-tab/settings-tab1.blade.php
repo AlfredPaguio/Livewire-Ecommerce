@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <form wire:submit.prevent="updateCompanyProfile">
+    <form wire:submit="updateCompanyProfile">
         <div class="row g-3 pt-3">
             <div class="col-lg-5 col-md-6">
                 <div class="card">
@@ -24,7 +24,7 @@
                             <input class="form-control @error('company_logo') is-invalid  @enderror
                             @if('company_logo') '' @endif"
                             type="file" id="company_logo"
-                            wire:model="company_logo" accept="image/*">
+                            wire:model.live="company_logo" accept="image/*">
 
                             @error('company_logo') 
                                 <small class="text-danger">{{ $message }}</small>
@@ -59,7 +59,7 @@
                             <input type="text" class="form-control @error('company_profile.name') is-invalid  @enderror
                             @if('company_profile.name') '' @endif"
                             id="company_profile.name" placeholder="Company Name"
-                            wire:model.debounce.500ms="company_profile.name">
+                            wire:model.live.debounce.500ms="company_profile.name">
                             @error('company_profile.name') 
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -108,7 +108,7 @@
                                                         <input type="text" class="form-control @error('socials.'.$index.'.name') is-invalid  @enderror
                                                         @if("socials.{{ $index }}.name") '' @endif"
                                                         id="socials.{{ $index }}.name" placeholder="Social Media Name"
-                                                        wire:model.debounce.500ms="socials.{{ $index }}.name">
+                                                        wire:model.live.debounce.500ms="socials.{{ $index }}.name">
                                                         @error('socials.'.$index.'.name') 
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
@@ -119,7 +119,7 @@
                                                         <input type="text" class="form-control @error('socials.'.$index.'.link') is-invalid  @enderror
                                                         @if("socials.{{ $index }}.link") '' @endif"
                                                         id="socials.{{ $index }}.link" placeholder="Social Media Link"
-                                                        wire:model.debounce.500ms="socials.{{ $index }}.link">
+                                                        wire:model.live.debounce.500ms="socials.{{ $index }}.link">
                                                         @error('socials.'.$index.'.link') 
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror

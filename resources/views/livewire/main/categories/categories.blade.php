@@ -10,7 +10,7 @@
             <input type="text" 
             class="form-control shadow-sm" 
             placeholder="Search categories..."
-            wire:model.debounce.500ms="search"
+            wire:model.live.debounce.500ms="search"
             :wire:key="concat('admin.categories', $search)">
         </div>
     </div>

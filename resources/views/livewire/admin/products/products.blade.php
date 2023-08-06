@@ -25,7 +25,7 @@
                <input type="text" 
                class="form-control w-50 shadow-sm" 
                placeholder="Search products..."
-               wire:model.debounce.500ms="search"
+               wire:model.live.debounce.500ms="search"
                :wire:key="concat('admin.products', $search)">
            </div>
 

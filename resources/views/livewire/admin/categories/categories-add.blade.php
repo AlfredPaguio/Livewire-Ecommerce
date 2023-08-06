@@ -9,14 +9,14 @@
             <h3 class="m-0 font-weight-bold text-light">New Category</h3>
         </div>
         <div class="card-body bg-light">
-            <form class="row g-3 justify-content" wire:submit.prevent="createCategory">
+            <form class="row g-3 justify-content" wire:submit="createCategory">
                 @csrf
                 <div class="col-md-6">
                     <label for="name" class="form-label fw-bold">Category Name</label>
                     <input type="text" class="form-control @error('name') is-invalid  @enderror
                     @if($name) '' @endif"
                     id="name" placeholder="Category Name"
-                    wire:model.debounce.500ms="name">
+                    wire:model.live.debounce.500ms="name">
                     @error('name') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -26,7 +26,7 @@
                     <input type="text" class="form-control @error('slug') is-invalid  @enderror
                     @if($slug) '' @endif"
                     id="slug" placeholder="Slug"
-                    wire:model.debounce.500ms="slug">
+                    wire:model.live.debounce.500ms="slug">
                     @error('slug') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -36,7 +36,7 @@
                     <textarea class="form-control @error('description') is-invalid  @enderror
                     @if($description) '' @endif" 
                     name="description" id="description" rows="2" placeholder="Description"
-                    wire:model.debounce.500ms="description"></textarea>
+                    wire:model.live.debounce.500ms="description"></textarea>
                     @error('description') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -47,7 +47,7 @@
                     <input class="form-control @error('image') is-invalid  @enderror
                     @if($image) '' @endif"
                     type="file" id="image"
-                    wire:model="image" accept="image/*"> 
+                    wire:model.live="image" accept="image/*"> 
 
                     @error('image') 
                     <small class="text-danger">{{ $message }}</small>
@@ -66,7 +66,7 @@
                     <label for="status" class="form-label fw-bold" >
                         Status
                     </label>
-                    <select name="status" id="status" class="form-select" aria-placeholder="Select Status" wire:model.debounce.500ms="status">
+                    <select name="status" id="status" class="form-select" aria-placeholder="Select Status" wire:model.live.debounce.500ms="status">
                         <option value="1">Active</option>
                         <option value="0">Inactive</option>
                     </select>
@@ -86,7 +86,7 @@
                     <input type="text" class="form-control @error('meta_name') is-invalid  @enderror
                     @if($meta_name) '' @endif"
                     id="meta_name" placeholder="Meta Name"
-                    wire:model.debounce.500ms="meta_name">
+                    wire:model.live.debounce.500ms="meta_name">
                     @error('meta_name') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -97,7 +97,7 @@
                     <textarea class="form-control @error('meta_keyword') is-invalid  @enderror
                     @if($meta_keyword) '' @endif" 
                     name="meta_keyword" id="meta_keyword" rows="2" placeholder="Meta Keyword"
-                    wire:model.debounce.500ms="meta_keyword"></textarea>
+                    wire:model.live.debounce.500ms="meta_keyword"></textarea>
                     @error('meta_keyword') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -108,7 +108,7 @@
                     <textarea class="form-control @error('meta_description') is-invalid  @enderror
                     @if($meta_description) '' @endif"
                     name="meta_description" id="meta_description" rows="2" placeholder="Meta Description"
-                    wire:model.debounce.500ms="meta_description"></textarea>
+                    wire:model.live.debounce.500ms="meta_description"></textarea>
                     @error('meta_description') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror

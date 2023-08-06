@@ -5,7 +5,7 @@
            <h1 class="modal-title fs-5 fw-bold" id="addDocumentModal">Add Document</h1>
            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form wire:submit.prevent="addCompanyDocuments">
+        <form wire:submit="addCompanyDocuments">
           <div class="modal-body">
             @csrf
             <div class="row gap-3">
@@ -13,7 +13,7 @@
                   <label for="name" class="form-label fw-bold">Document Name</label>
                   <input type="text" class="form-control @error('name') is-invalid @enderror"
                     id="name" placeholder="Document Name"
-                    wire:model.debounce.500ms="name">
+                    wire:model.live.debounce.500ms="name">
                   @error('name') 
                   <small class="text-danger">{{ $message }}</small>
                   @enderror
@@ -22,7 +22,7 @@
                   <label for="document" class="form-label fw-bold">Document</label>
                   <input type="file" class="form-control @error('document') is-invalid @enderror"
                     id="document" placeholder="File"
-                    wire:model.debounce.500ms="document"
+                    wire:model.live.debounce.500ms="document"
                     accept=".pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
                   @error('document') 
                   <small class="text-danger">{{ $message }}</small>

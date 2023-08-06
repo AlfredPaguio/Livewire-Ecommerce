@@ -27,7 +27,7 @@
                 </div>
             @endif
 
-            <form wire:submit.prevent="createProduct">
+            <form wire:submit="createProduct">
                 @csrf
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -45,7 +45,7 @@
                                 <input type="text" class="form-control @error('name') is-invalid  @enderror
                                 @if($name) '' @endif"
                                 id="name" placeholder="Product Name"
-                                wire:model.debounce.500ms="name">
+                                wire:model.live.debounce.500ms="name">
                                 @error('name') 
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -56,7 +56,7 @@
                                 <input type="text" class="form-control @error('slug') is-invalid  @enderror
                                 @if($slug) '' @endif"
                                 id="slug" placeholder="Product Name"
-                                wire:model.debounce.500ms="slug">
+                                wire:model.live.debounce.500ms="slug">
                                 @error('slug') 
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -67,7 +67,7 @@
                                     Category
                                 </label>
                                 
-                                <select name="category" id="category" class="form-select @error('category') is-invalid @enderror" aria-placeholder="Select Category" wire:model="category" wire:change="matchBrands">
+                                <select name="category" id="category" class="form-select @error('category') is-invalid @enderror" aria-placeholder="Select Category" wire:model.live="category" wire:change="matchBrands">
                                     <option value="-1" selected>Select Category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -88,7 +88,7 @@
                                     Loading...
                                 </div>
                                 
-                                <select name="brand" id="brand" class="form-select @error('brand') is-invalid @enderror" aria-placeholder="Select Brand" wire:model="brand">
+                                <select name="brand" id="brand" class="form-select @error('brand') is-invalid @enderror" aria-placeholder="Select Brand" wire:model.live="brand">
                                     <option value="-1" selected>Select Brand</option>
                                     @foreach ($brands as $brand)
                                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
@@ -105,7 +105,7 @@
                                 <textarea class="form-control @error('description') is-invalid  @enderror
                                 @if($description) '' @endif" 
                                 name="description" id="description" rows="2" placeholder="Description"
-                                wire:model.debounce.500ms="description"></textarea>
+                                wire:model.live.debounce.500ms="description"></textarea>
                         
                                 @error('description') 
                                     <small class="text-danger">{{ $message }}</small>
@@ -117,7 +117,7 @@
                                     Status
                                 </label>
                         
-                                <select name="status" id="status" class="form-select" aria-placeholder="Select Category" wire:model.debounce.500ms="status">
+                                <select name="status" id="status" class="form-select" aria-placeholder="Select Category" wire:model.live.debounce.500ms="status">
                                     <option value="1">Active</option>
                                     <option value="0">Inactive</option>
                                 </select>
@@ -128,7 +128,7 @@
                                     Featured
                                 </label>
                         
-                                <select name="featured" id="featured" class="form-select" aria-placeholder="Select Category" wire:model.debounce.500ms="featured">
+                                <select name="featured" id="featured" class="form-select" aria-placeholder="Select Category" wire:model.live.debounce.500ms="featured">
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
                                 </select>
@@ -145,7 +145,7 @@
                                 <input type="text" class="form-control @error('meta_name') is-invalid  @enderror
                                 @if($meta_name) '' @endif"
                                 id="meta_name" placeholder="Meta Name"
-                                wire:model.debounce.500ms="meta_name">
+                                wire:model.live.debounce.500ms="meta_name">
                                 @error('meta_name') 
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -156,7 +156,7 @@
                                 <textarea class="form-control @error('meta_keyword') is-invalid  @enderror
                                 @if($meta_keyword) '' @endif" 
                                 name="meta_keyword" id="meta_keyword" rows="2" placeholder="Meta Keyword"
-                                wire:model.debounce.500ms="meta_keyword"></textarea>
+                                wire:model.live.debounce.500ms="meta_keyword"></textarea>
                                 @error('meta_keyword') 
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -167,7 +167,7 @@
                                 <textarea class="form-control @error('meta_description') is-invalid  @enderror
                                 @if($meta_description) '' @endif"
                                 name="meta_description" id="meta_description" rows="2" placeholder="Meta Description"
-                                wire:model.debounce.500ms="meta_description"></textarea>
+                                wire:model.live.debounce.500ms="meta_description"></textarea>
                                 @error('meta_description') 
                                     <small class="text-danger">{{ $message }}</small>
                                 @enderror
@@ -212,7 +212,7 @@
                                                         <label for="stock_name{{ $index }}" class="form-label fw-bold">Stock Name</label>
                                                         <input type="text" class="form-control @error('stocks.'.$index.'.name') is-invalid @enderror"
                                                             id="stock_name{{ $index }}" placeholder="Stock Name"
-                                                            wire:model.debounce.500ms="stocks.{{ $index }}.name">
+                                                            wire:model.live.debounce.500ms="stocks.{{ $index }}.name">
                                                         @error('stocks.'.$index.'.name') 
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
@@ -222,7 +222,7 @@
                                                         <label for="quantity{{ $index }}" class="form-label fw-bold">Quantity</label>
                                                         <input type="number" class="form-control @error('stocks.'.$index.'.quantity') is-invalid @enderror"
                                                             id="quantity{{ $index }}" placeholder="Quantity"
-                                                            wire:model.debounce.500ms="stocks.{{ $index }}.quantity">
+                                                            wire:model.live.debounce.500ms="stocks.{{ $index }}.quantity">
                                                         @error('stocks.'.$index.'.quantity') 
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
@@ -233,7 +233,7 @@
                                                         <select name="status{{ $index }}" id="status{{ $index }}" 
                                                         class="form-select @error('stocks.'.$index.'.status') is-invalid @enderror"
                                                             aria-placeholder="Select Status"
-                                                            wire:model.debounce.500ms="stocks.{{ $index }}.status">
+                                                            wire:model.live.debounce.500ms="stocks.{{ $index }}.status">
                                                             <option value="">Select Status</option>
                                                             <option value="1">Active</option>
                                                             <option value="0">Inactive</option>
@@ -247,7 +247,7 @@
                                                         <label for="original_price{{ $index }}" class="form-label fw-bold">Original Price</label>
                                                         <input type="number" class="form-control @error('stocks.'.$index.'.original_price') is-invalid @enderror"
                                                             id="original_price{{ $index }}" placeholder="Original Price"
-                                                            wire:model.debounce.500ms="stocks.{{ $index }}.original_price">
+                                                            wire:model.live.debounce.500ms="stocks.{{ $index }}.original_price">
                                                         @error('stocks.'.$index.'.original_price')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
@@ -257,7 +257,7 @@
                                                         <label for="selling_price{{ $index }}" class="form-label fw-bold">Selling Price</label>
                                                         <input type="number" class="form-control @error('stocks.'.$index.'.selling_price') is-invalid @enderror"
                                                             id="selling_price{{ $index }}" placeholder="Selling Price"
-                                                            wire:model.debounce.500ms="stocks.{{ $index }}.selling_price">
+                                                            wire:model.live.debounce.500ms="stocks.{{ $index }}.selling_price">
                                                         @error('stocks.'.$index.'.selling_price')
                                                             <small class="text-danger">{{ $message }}</small>
                                                         @enderror
@@ -279,7 +279,7 @@
                                 <input class="form-control @error('images') is-invalid  @enderror
                                 @if($images) '' @endif"
                                 type="file" id="images"
-                                wire:model="images" accept="image/*" multiple> 
+                                wire:model.live="images" accept="image/*" multiple> 
                         
                                 @error('images') 
                                     <small class="text-danger">{{ $message }}</small>

@@ -9,14 +9,14 @@
             <h3 class="m-0 font-weight-bold text-light">Edit information for {{ $brand->name }}</h3>
         </div>
         <div class="card-body bg-light">
-            <form class="row g-3 justify-content" wire:submit.prevent="editBrand">
+            <form class="row g-3 justify-content" wire:submit="editBrand">
                 @csrf
                 <div class="col-md-4">
                     <label for="name" class="form-label fw-bold">Brand Name</label>
                     <input type="text" class="form-control @error('name') is-invalid  @enderror
                     @if($name) '' @endif"
                     id="name" placeholder="Brand Name"
-                    wire:model.debounce.500ms="name">
+                    wire:model.live.debounce.500ms="name">
                     @error('name') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -27,7 +27,7 @@
                     <input type="text" class="form-control @error('slug') is-invalid  @enderror
                     @if($slug) '' @endif"
                     id="slug" placeholder="Slug"
-                    wire:model.debounce.500ms="slug">
+                    wire:model.live.debounce.500ms="slug">
                     @error('slug') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -38,7 +38,7 @@
                         Category
                     </label>
             
-                    <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror" aria-placeholder="Select Category" wire:model.debounce.500ms="category_id">
+                    <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror" aria-placeholder="Select Category" wire:model.live.debounce.500ms="category_id">
                         <option>Select Category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -55,7 +55,7 @@
                     <input class="form-control @error('image') is-invalid  @enderror
                     @if($image) '' @endif"
                     type="file" id="image"
-                    wire:model="image" accept="image/*">     
+                    wire:model.live="image" accept="image/*">     
                     @error('image') 
                     <small class="text-danger">{{ $message }}</small>
                     @enderror
@@ -76,7 +76,7 @@
                     <label for="status" class="form-label fw-bold" >
                         Status
                     </label>
-                    <select name="status" id="status" class="form-select" aria-placeholder="Select Status" wire:model.debounce.500ms="status">
+                    <select name="status" id="status" class="form-select" aria-placeholder="Select Status" wire:model.live.debounce.500ms="status">
                         <option value="1">Active</option>
                         <option value="0">Inactive</option>
                     </select>

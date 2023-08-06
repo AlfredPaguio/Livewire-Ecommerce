@@ -17,7 +17,7 @@
                     @foreach($category->brands as $brand)
                         <div class="form-check pb-1" wire:key='{{ $brand->id }}'>
                             <input class="form-check-input"  type="checkbox" value="{{ $brand->id }}" id="brand_in_category_{{ $brand->id }}" 
-                            wire:model="brands">
+                            wire:model.live="brands">
                             <label class="form-check-label fw-bold" for="brand_in_category_{{ $brand->id }}">
                             {{ $brand->name }}
                             </label>
@@ -37,7 +37,7 @@
                 <div class="d-flex justify-content-between">
                     <div class="">
                         <label for="minPrice" class="form-label fw-bold mb-0">Min</label>
-                        <input type="number" id="minPrice" wire:model="minPrice" class="form-control">
+                        <input type="number" id="minPrice" wire:model.live="minPrice" class="form-control">
                     </div>
                     <div class="px-2 pt-4">
                         <span>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="">
                         <label for="maxPrice" class="form-label fw-bold mb-0">Max</label>
-                        <input type="number" id="maxPrice" wire:model="maxPrice" class="form-control">
+                        <input type="number" id="maxPrice" wire:model.live="maxPrice" class="form-control">
                     </div>
                 </div>
                 </div>

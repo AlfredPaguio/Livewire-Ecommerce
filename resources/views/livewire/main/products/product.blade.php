@@ -99,7 +99,7 @@
                </button>
    
                <div class="border border-dark rounded px-4 mx-2">
-                  <h1 class="fw-bold fs-3 m-0 pt-1" wire:model="quantity">
+                  <h1 class="fw-bold fs-3 m-0 pt-1" wire:model.live="quantity">
                      {{ $quantity }}
                   </h1>
                </div>
