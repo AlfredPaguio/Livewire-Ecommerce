@@ -24,7 +24,11 @@
                @foreach($product->images as $image)
                   <div class="carousel-item @if($loop->first) active @endif" data-bs-interval="3000">
                      <div class="card">
-                        <img src="{{ asset('storage/' . $image->filename) }}" class="d-block w-100" alt="..." height="500">
+                     @if (filter_var($image->filename, FILTER_VALIDATE_URL))
+                                    <img src="{{ $image->filename }}" class="d-block w-100" alt="..." height="500">
+                                    @else
+                                    <img src="{{ asset('storage/'.$image->filename)}}" class="d-block w-100" alt="..." height="500">
+                                    @endif
                      </div>
                   </div>
                @endforeach

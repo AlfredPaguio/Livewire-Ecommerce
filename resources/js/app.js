@@ -7,10 +7,10 @@ import '../css/app.css';
 import * as bootstrap from 'bootstrap';
 
 // Import Font Awesome CSS
-import '@fortawesome/fontawesome-free/css/all.css';
+import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
 
 // Import Font Awesome JS
-import '@fortawesome/fontawesome-free/js/all.js';
+import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js';
 
 
 

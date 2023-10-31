@@ -8,7 +8,12 @@
       @foreach ($sliders as $slider)
       @if($slider->status == '1')
         <div class="carousel-item @if($loop->index == 0) active @endif" data-bs-interval="3000">
-          <img src="{{ asset('storage/'.$slider->image)}}" class="d-block w-100 carousel-slider" alt="{{ $slider->title }}">
+        @if (filter_var($slider->image, FILTER_VALIDATE_URL))
+                                    <img src="{{ $slider->image }}" alt="{{ $slider->title }}" class="d-block w-100 carousel-slider">
+                                    @else
+                                    <img src="{{ asset('storage/'.$slider->image)}}" alt="{{ $slider->title }}" class="d-block w-100 carousel-slider">
+                                    @endif
+         
           <div class="carousel-caption d-none d-md-block">
             <div class="text-start">
               <h5>{{ $slider->title }}</h5>

@@ -80,8 +80,11 @@
             <div class="col-6 col-md-4 col-lg-2 p-1" wire:key='{{ $product->id }}'>
                 <a id="product" href="{{ route('main.product', ['slug' => $product->slug, 'id' => $product->id ])}}" class="text-decoration-none">
                     <div class="card bg-body shadow-sm">
-                        <img src="{{ asset('storage/'.$product->images->first()->filename ) }}" class="card-img-top" alt="{{ $product->name }} image" height="160px">
-                        
+                        @if (filter_var($product->images->first()->filename, FILTER_VALIDATE_URL))
+                                    <img src="{{ $product->images->first()->filename }}" class="card-img-top" alt="{{ $product->name }} image" height="160px">
+                                    @else
+                                    <img src="{{ asset('storage/'.$product->images->first()->filename)}}" class="card-img-top" alt="{{ $product->name }} image" height="160px">
+                                    @endif
                         <div class="card-body p-2 m-0">
                             <div class="card-text p-0 m-0 mb-1">
                                 <span class=" p-1 top-0 start-100  badge 
